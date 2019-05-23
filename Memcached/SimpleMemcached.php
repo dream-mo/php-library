@@ -27,7 +27,6 @@
  */
 class SimpleMemcached extends BasicMemcached
 {
-
     /**
      * @var Memcached|null
      *
@@ -49,7 +48,6 @@ class SimpleMemcached extends BasicMemcached
      *
      */
     private $debug = true;
-
 
     public function __construct($host = '', $port = 11211, $debug = true)
     {
@@ -79,7 +77,6 @@ class SimpleMemcached extends BasicMemcached
      */
     public function __call($name, $arguments)
     {
-        var_dump("call");
         if (method_exists($this, $name)) {
             $returnVal = $this->$name(...$arguments);
             $this->handleException();
@@ -98,7 +95,6 @@ class SimpleMemcached extends BasicMemcached
     {
         if ($this->debug) {
             $code = $this->memcached->getLastErrorCode();
-
             if ($code) {
                 $message  = $this->memcached->getLastErrorMessage();
                 $message = "Error code $code : ".$message;
